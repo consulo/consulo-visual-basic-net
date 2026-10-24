@@ -1,0 +1,82 @@
+System(8,14): namespace System
+System(23,29): namespace System
+System.Collections(23,41): namespace System.Collections
+System.Collections.Generic(23,49): namespace System.Collections.Generic
+System(58,64): namespace System
+System.Text(58,69): namespace System.Text
+Demo(81,85): namespace Demo
+Animal(305,311): type Demo.Animal (VisualBasic.NET)
+Animal(399,405): type Demo.Animal (VisualBasic.NET)
+Animal(412,418): type Demo.Animal (VisualBasic.NET)
+Animal(423,429): type Demo.Animal (VisualBasic.NET)
+a(449,450): PARAMETER
+Animal(525,531): type Demo.Animal (VisualBasic.NET)
+x(854,855): PARAMETER
+List(Of String)(1000,1015): type System.Collections.Generic.List`1 (MSIL)
+Dog(1074,1077): type Demo.Dog (VisualBasic.NET)
+Dictionary(Of String, Dog)(1052,1078): type System.Collections.Generic.Dictionary`2 (MSIL)
+i(1240,1241): LOCAL_VARIABLE
+l(1244,1245): LOCAL_VARIABLE
+i(1270,1271): LOCAL_VARIABLE
+d(1274,1275): LOCAL_VARIABLE
+i(1303,1304): LOCAL_VARIABLE
+i(1339,1340): LOCAL_VARIABLE
+i(1406,1407): LOCAL_VARIABLE
+i(1473,1474): LOCAL_VARIABLE
+compare(1503,1510): LOCAL_VARIABLE
+i(1547,1548): LOCAL_VARIABLE
+i(1581,1582): LOCAL_VARIABLE
+compare(1613,1620): LOCAL_VARIABLE
+arg(1649,1652): PARAMETER
+text(1689,1693): PARAMETER
+Dog(1720,1723): type Demo.Dog (VisualBasic.NET)
+dog(1749,1752): LOCAL_VARIABLE
+dog.Name(1749,1757): VisualBasicPropertyDeclarationImpl Demo.Animal.Name
+dog(1780,1783): LOCAL_VARIABLE
+dog.Age(1780,1787): VisualBasicFieldDeclarationImpl Demo.Dog.Age
+dog(1812,1815): LOCAL_VARIABLE
+dog.Speak(1812,1821): VisualBasicMethodDeclarationImpl Demo.Animal.Speak
+dog(1861,1864): LOCAL_VARIABLE
+dog.Speak(1861,1870): VisualBasicMethodDeclarationImpl Demo.Animal.Speak
+dog(1900,1903): LOCAL_VARIABLE
+dog.Bark(1900,1908): VisualBasicMethodDeclarationImpl Demo.Dog.Bark
+dog(1942,1945): LOCAL_VARIABLE
+dog.Bark(1942,1950): VisualBasicMethodDeclarationImpl Demo.Dog.Bark
+Animal(1979,1985): type Demo.Animal (VisualBasic.NET)
+Animal.Create(1979,1992): VisualBasicMethodDeclarationImpl Demo.Animal.Create
+dog(2025,2028): LOCAL_VARIABLE
+dog(2031,2034): LOCAL_VARIABLE
+items(2059,2064): VisualBasicFieldDeclarationImpl Demo.Expressions.items
+items(2092,2097): VisualBasicFieldDeclarationImpl Demo.Expressions.items
+items.Count(2092,2103): MsilPropertyEntryImpl Count
+items(2133,2138): VisualBasicFieldDeclarationImpl Demo.Expressions.items
+items(0).Length(2133,2148): MsilPropertyEntryImpl Length
+map(2174,2177): VisualBasicFieldDeclarationImpl Demo.Expressions.map
+map(2211,2214): VisualBasicFieldDeclarationImpl Demo.Expressions.map
+map("a").Age(2211,2223): VisualBasicFieldDeclarationImpl Demo.Dog.Age
+StringBuilder(2287,2300): type System.Text.StringBuilder (MSIL)
+builder(2330,2337): LOCAL_VARIABLE
+builder.Append(2330,2344): MsilMethodEntryImpl Append
+Twice(2374,2379): VisualBasicMethodDeclarationImpl Demo.Helpers.Twice
+Pi(2404,2406): VisualBasicFieldDeclarationImpl Demo.Helpers.Pi
+dog(2438,2441): LOCAL_VARIABLE
+Animal(2443,2449): type Demo.Animal (VisualBasic.NET)
+dog(2520,2523): LOCAL_VARIABLE
+Dog(2527,2530): type Demo.Dog (VisualBasic.NET)
+compare(2560,2567): LOCAL_VARIABLE
+text(2605,2609): PARAMETER
+array(2693,2698): LOCAL_VARIABLE
+i(2822,2823): LOCAL_VARIABLE
+Dog(2860,2863): type Demo.Dog (VisualBasic.NET)
+Integer.MaxValue(2951,2967): MsilFieldEntryImpl MaxValue
+String.Empty(2998,3010): MsilFieldEntryImpl Empty
+Console(3036,3043): type System.Console (MSIL)
+Console.Out(3036,3047): MsilPropertyEntryImpl Out
+DOG(3076,3079): LOCAL_VARIABLE
+DOG.AGE(3076,3083): VisualBasicFieldDeclarationImpl Demo.Dog.Age
+items(3113,3118): VisualBasicFieldDeclarationImpl Demo.Expressions.items
+item(3150,3154): LOCAL_VARIABLE
+index(3234,3239): LOCAL_VARIABLE
+c(3323,3324): LOCAL_VARIABLE
+dog(3359,3362): LOCAL_VARIABLE
+.Name(3394,3399): VisualBasicPropertyDeclarationImpl Demo.Animal.Name

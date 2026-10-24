@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <component name="CompilerManager">
+    <module name="consulo.visualBasic.dotnet" exclude="false" inherit="false">
+      <output url="file://$PROJECT_DIR$/plugin/target/classes" type="PRODUCTION" />
+      <output url="file://$PROJECT_DIR$/plugin/target/classes" type="PRODUCTION_RESOURCE" />
+      <output url="file://$PROJECT_DIR$/plugin/target/test-classes" type="TEST" />
+      <output url="file://$PROJECT_DIR$/plugin/target/test-classes" type="TEST_RESOURCE" />
+    </module>
+    <module name="consulo.visualBasic.dotnet-api" exclude="false" inherit="false">
+      <output url="file://$PROJECT_DIR$/visual-basic-api/target/classes" type="PRODUCTION" />
+      <output url="file://$PROJECT_DIR$/visual-basic-api/target/classes" type="PRODUCTION_RESOURCE" />
+      <output url="file://$PROJECT_DIR$/visual-basic-api/target/test-classes" type="TEST" />
+      <output url="file://$PROJECT_DIR$/visual-basic-api/target/test-classes" type="TEST_RESOURCE" />
+    </module>
+    <module name="consulo.visualBasic.dotnet.it" exclude="false" inherit="false">
+      <output url="file://$PROJECT_DIR$/visual-basic-it/target/classes" type="PRODUCTION" />
+      <output url="file://$PROJECT_DIR$/visual-basic-it/target/classes" type="PRODUCTION_RESOURCE" />
+      <output url="file://$PROJECT_DIR$/visual-basic-it/target/test-classes" type="TEST" />
+      <output url="file://$PROJECT_DIR$/visual-basic-it/target/test-classes" type="TEST_RESOURCE" />
+    </module>
+    <module name="consulo.visualBasic.dotnet.parent" exclude="false" inherit="false">
+      <output url="file://$PROJECT_DIR$/target/classes" type="PRODUCTION" />
+      <output url="file://$PROJECT_DIR$/target/classes" type="PRODUCTION_RESOURCE" />
+      <output url="file://$PROJECT_DIR$/target/test-classes" type="TEST" />
+      <output url="file://$PROJECT_DIR$/target/test-classes" type="TEST_RESOURCE" />
+    </module>
+  </component>
+  <component name="JavaCompilerConfiguration" compiler="JavacCompiler">
+    <annotation-processing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for consulo.visualBasic.dotnet-api" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <option name="dsljson.generatedmarker" value="" />
+        <processorPath useClasspath="true" />
+        <module name="consulo.visualBasic.dotnet-api" />
+      </profile>
+      <profile default="false" name="Annotation profile for consulo.visualBasic.dotnet" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <option name="dsljson.generatedmarker" value="" />
+        <processorPath useClasspath="true" />
+        <module name="consulo.visualBasic.dotnet" />
+      </profile>
+      <profile default="false" name="Annotation profile for consulo.visualBasic.dotnet.it" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <option name="dsljson.generatedmarker" value="" />
+        <processorPath useClasspath="true" />
+        <module name="consulo.visualBasic.dotnet.it" />
+      </profile>
+    </annotation-processing>
+  </component>
+</project>

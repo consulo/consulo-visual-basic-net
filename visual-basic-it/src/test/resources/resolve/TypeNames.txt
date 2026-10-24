@@ -1,0 +1,26 @@
+System(8,14): namespace System
+System(23,29): namespace System
+System.Collections(23,41): namespace System.Collections
+System(56,62): namespace System
+System.Collections(56,74): namespace System.Collections
+Company(86,93): namespace Company
+Company.Product(86,101): namespace Company.Product
+Base(187,191): type Company.Product.Base (VisualBasic.NET)
+IDisposable(211,222): type System.IDisposable (MSIL)
+ICloneable(224,234): type System.ICloneable (MSIL)
+Hashtable(270,279): type System.Collections.Hashtable (MSIL)
+Col(313,316): namespace System.Collections
+Col.ArrayList(313,326): type System.Collections.ArrayList (MSIL)
+System(365,371): namespace System
+System.Text(365,376): namespace System.Text
+System.Text.StringBuilder(365,390): type System.Text.StringBuilder (MSIL)
+Global(430,436): empty
+Global.System(430,443): namespace System
+Global.System.Int32(430,449): type System.Int32 (MSIL)
+T(484,485): generic-parameter T
+Inner(521,526): type Company.Product.Derived`1/Inner (VisualBasic.NET)
+NotExisting(563,574): empty
+system(613,619): namespace System
+system.text(613,624): namespace System.Text
+system.text.stringbuilder(613,638): type System.Text.StringBuilder (MSIL)
+hashtable(685,694): type System.Collections.Hashtable (MSIL)

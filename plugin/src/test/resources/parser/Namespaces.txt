@@ -1,0 +1,38 @@
+VISUAL_BASIC_FILE
+  NAMESPACE_DECLARATION
+    MODIFIER_LIST
+      <empty list>
+    PsiElement(NamespaceKeyword)('Namespace')
+    REFERENCE_EXPRESSION
+      REFERENCE_EXPRESSION
+        PsiElement(IdentifierToken)('A')
+      PsiElement(DotToken)('.')
+      PsiElement(IdentifierToken)('B')
+    NAMESPACE_DECLARATION
+      MODIFIER_LIST
+        <empty list>
+      PsiElement(NamespaceKeyword)('Namespace')
+      REFERENCE_EXPRESSION
+        PsiElement(IdentifierToken)('C')
+      TYPE_DECLARATION
+        MODIFIER_LIST
+          PsiElement(PublicKeyword)('Public')
+        PsiElement(ClassKeyword)('Class')
+        PsiElement(IdentifierToken)('Foo')
+        PsiElement(EndKeyword)('End')
+        PsiElement(ClassKeyword)('Class')
+      PsiElement(EndKeyword)('End')
+      PsiElement(NamespaceKeyword)('Namespace')
+    PsiElement(EndKeyword)('End')
+    PsiElement(NamespaceKeyword)('Namespace')
+  NAMESPACE_DECLARATION
+    MODIFIER_LIST
+      <empty list>
+    PsiElement(NamespaceKeyword)('Namespace')
+    REFERENCE_EXPRESSION
+      REFERENCE_EXPRESSION
+        PsiElement(GlobalKeyword)('Global')
+      PsiElement(DotToken)('.')
+      PsiElement(IdentifierToken)('D')
+    PsiElement(EndKeyword)('End')
+    PsiElement(NamespaceKeyword)('Namespace')

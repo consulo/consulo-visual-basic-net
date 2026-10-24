@@ -1,0 +1,86 @@
+color.keyword:
+    text: Keywords//Keyword
+color.contextual.keyword:
+    text: Keywords//Contextual keyword
+color.identifier:
+    text: Identifier
+color.number:
+    text: Number
+color.string:
+    text: String
+color.date:
+    text: Date literal
+color.comment:
+    text: Comments//Comment
+color.doc.comment:
+    text: Comments//Documentation comment
+color.preprocessor.directive:
+    text: Preprocessor//Directive
+color.disabled.code:
+    text: Preprocessor//Disabled code
+color.operation.sign:
+    text: Braces and Operators//Operator sign
+color.parentheses:
+    text: Braces and Operators//Parentheses
+color.braces:
+    text: Braces and Operators//Braces
+color.dot:
+    text: Braces and Operators//Dot
+color.comma:
+    text: Braces and Operators//Comma
+color.line.continuation:
+    text: Braces and Operators//Line continuation
+color.xml.tag:
+    text: XML Literals//Tag
+color.xml.attribute:
+    text: XML Literals//Attribute name
+color.xml.attribute.value:
+    text: XML Literals//Attribute value
+color.xml.text:
+    text: XML Literals//Text
+color.xml.comment:
+    text: XML Literals//Comment
+color.xml.embedded:
+    text: XML Literals//Embedded expression
+color.bad.character:
+    text: Bad character
+color.class.name:
+    text: Types//Class
+color.module.name:
+    text: Types//Module
+color.structure.name:
+    text: Types//Structure
+color.interface.name:
+    text: Types//Interface
+color.enum.name:
+    text: Types//Enum
+color.delegate.name:
+    text: Types//Delegate
+color.attribute.name:
+    text: Types//Attribute
+color.generic.parameter.name:
+    text: Types//Generic parameter
+color.method.name:
+    text: Methods//Method declaration
+color.static.method.call:
+    text: Methods//Shared method call
+color.instance.method.call:
+    text: Methods//Instance method call
+color.constant:
+    text: Fields, Properties and Events//Constant
+color.static.field:
+    text: Fields, Properties and Events//Shared field
+color.instance.field:
+    text: Fields, Properties and Events//Instance field
+color.static.property:
+    text: Fields, Properties and Events//Shared property
+color.instance.property:
+    text: Fields, Properties and Events//Instance property
+color.static.event:
+    text: Fields, Properties and Events//Shared event
+color.instance.event:
+    text: Fields, Properties and Events//Instance event
+color.parameter:
+    text: Variables//Parameter
+color.local.variable:
+    text: Variables//Local variable

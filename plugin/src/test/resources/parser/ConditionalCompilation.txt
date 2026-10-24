@@ -1,0 +1,86 @@
+VISUAL_BASIC_FILE
+  PsiComment(ActiveDirectiveTrivia)('#Const Feature = True')
+  PsiComment(ActiveDirectiveTrivia)('#Const Level = 2')
+  TYPE_DECLARATION
+    MODIFIER_LIST
+      <empty list>
+    PsiElement(ModuleKeyword)('Module')
+    PsiElement(IdentifierToken)('M')
+    PsiComment(ActiveDirectiveTrivia)('#If Feature AndAlso Level >= 2 Then')
+    METHOD_DECLARATION
+      MODIFIER_LIST
+        <empty list>
+      PsiElement(SubKeyword)('Sub')
+      PsiElement(IdentifierToken)('Active')
+      PARAMETER_LIST
+        PsiElement(OpenParenToken)('(')
+        PsiElement(CloseParenToken)(')')
+      CODE_BLOCK
+        <empty list>
+      PsiElement(EndKeyword)('End')
+      PsiElement(SubKeyword)('Sub')
+    PsiComment(ActiveDirectiveTrivia)('#ElseIf Feature Then')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('NotTaken')
+    PsiComment(DisabledTextTrivia)('(')
+    PsiComment(DisabledTextTrivia)(')')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('x')
+    PsiComment(DisabledTextTrivia)('=')
+    PsiComment(DisabledTextTrivia)('"unbalanced\n    End Sub')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(ActiveDirectiveTrivia)('#Else')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('Inactive')
+    PsiComment(DisabledTextTrivia)('(')
+    PsiComment(DisabledTextTrivia)(')')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('End')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(ActiveDirectiveTrivia)('#End If')
+    PsiComment(ActiveDirectiveTrivia)('#If Not Feature Then')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('Disabled')
+    PsiComment(DisabledTextTrivia)('(')
+    PsiComment(DisabledTextTrivia)(')')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledDirectiveTrivia)('#If True Then')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('Nested')
+    PsiComment(DisabledTextTrivia)('(')
+    PsiComment(DisabledTextTrivia)(')')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledDirectiveTrivia)('#End If')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(ActiveDirectiveTrivia)('#Else')
+    METHOD_DECLARATION
+      MODIFIER_LIST
+        <empty list>
+      PsiElement(SubKeyword)('Sub')
+      PsiElement(IdentifierToken)('Enabled')
+      PARAMETER_LIST
+        PsiElement(OpenParenToken)('(')
+        PsiElement(CloseParenToken)(')')
+      CODE_BLOCK
+        <empty list>
+      PsiElement(EndKeyword)('End')
+      PsiElement(SubKeyword)('Sub')
+    PsiComment(ActiveDirectiveTrivia)('#End If')
+    PsiComment(ActiveDirectiveTrivia)('#If UNDEFINED Then')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('Undefined')
+    PsiComment(DisabledTextTrivia)('(')
+    PsiComment(DisabledTextTrivia)(')')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(DisabledTextTrivia)('End')
+    PsiComment(DisabledTextTrivia)('Sub')
+    PsiComment(DisabledTextTrivia)('\n')
+    PsiComment(ActiveDirectiveTrivia)('#End If')
+    PsiElement(EndKeyword)('End')
+    PsiElement(ModuleKeyword)('Module')

@@ -1,0 +1,47 @@
+VISUAL_BASIC_FILE
+  PsiComment(ActiveDirectiveTrivia)('#Region "R"')
+  IMPORTS_STATEMENT
+    PsiElement(ImportsKeyword)('Imports')
+    IMPORTS_CLAUSE
+      REFERENCE_EXPRESSION
+        PsiElement(IdentifierToken)('System')
+  PsiComment(ActiveDirectiveTrivia)('#End Region')
+  PsiComment(ActiveDirectiveTrivia)('#If DEBUG Then')
+  PsiComment(DisabledTextTrivia)('\n')
+  PsiComment(DisabledTextTrivia)('Module')
+  PsiComment(DisabledTextTrivia)('M')
+  PsiComment(DisabledTextTrivia)('\n')
+  PsiComment(ActiveDirectiveTrivia)('#Else')
+  TYPE_DECLARATION
+    MODIFIER_LIST
+      <empty list>
+    PsiElement(ModuleKeyword)('Module')
+    PsiElement(IdentifierToken)('N')
+    PsiComment(ActiveDirectiveTrivia)('#End If')
+    PsiComment(CommentTrivia)('' comment')
+    PsiComment(CommentTrivia)('Rem rem comment')
+    PsiComment(DocumentationCommentTrivia)('''' <summary>Doc</summary>')
+    METHOD_DECLARATION
+      MODIFIER_LIST
+        <empty list>
+      PsiElement(SubKeyword)('Sub')
+      PsiElement(IdentifierToken)('Main')
+      PARAMETER_LIST
+        PsiElement(OpenParenToken)('(')
+        PsiElement(CloseParenToken)(')')
+      PsiComment(CommentTrivia)('' trailing')
+      CODE_BLOCK
+        ASSIGNMENT_STATEMENT
+          REFERENCE_EXPRESSION
+            PsiElement(IdentifierToken)('x')
+          PsiElement(EqualsToken)('=')
+          BINARY_EXPRESSION
+            LITERAL_EXPRESSION
+              PsiElement(IntegerLiteralToken)('1')
+            PsiElement(PlusToken)('+')
+            LITERAL_EXPRESSION
+              PsiElement(IntegerLiteralToken)('2')
+      PsiElement(EndKeyword)('End')
+      PsiElement(SubKeyword)('Sub')
+    PsiElement(EndKeyword)('End')
+    PsiElement(ModuleKeyword)('Module')

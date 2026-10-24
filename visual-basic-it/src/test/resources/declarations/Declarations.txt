@@ -1,0 +1,34 @@
+NAMESPACE_DECLARATION name=Company.Product parent=null
+  TYPE_DECLARATION name=Outer parent=Company.Product modifiers=[public] vm=Company.Product.Outer`1 kind=CLASS extends=[?Base, System.IDisposable]
+    FIELD_DECLARATION name=count parent=Company.Product.Outer modifiers=[private,dim] type=System.Int32
+    FIELD_DECLARATION name=names parent=Company.Product.Outer modifiers=[private,static,readonly] type=System.String[]
+    FIELD_DECLARATION name=Max parent=Company.Product.Outer modifiers=[public,static,const] type=System.Int32 const
+    FIELD_DECLARATION name=Min parent=Company.Product.Outer modifiers=[public,static,const] type=System.Int32 const
+    FIELD_DECLARATION name=Timer parent=Company.Product.Outer modifiers=[public,withevents] type=System.Threading.Timer
+    FIELD_DECLARATION name=maybe parent=Company.Product.Outer modifiers=[private,dim] type=System.Nullable`1<System.Double>
+    FIELD_DECLARATION name=matrix parent=Company.Product.Outer modifiers=[private,dim] type=System.Byte[,]
+    CONSTRUCTOR_DECLARATION name=Outer parent=Company.Product.Outer modifiers=[public] returns=System.Void parameters=(x As System.Int32, rest As System.Object[])
+    METHOD_DECLARATION name=Compute parent=Company.Product.Outer modifiers=[public] returns=System.Collections.Generic.Dictionary`2<System.String, U> parameters=(value As U, list As System.Collections.Generic.List`1<T>)
+    METHOD_DECLARATION name=NoType parent=Company.Product.Outer modifiers=[public] returns=System.Object parameters=(name As System.String)
+    METHOD_DECLARATION name=Run parent=Company.Product.Outer modifiers=[protected,internal,overridable] returns=System.Void parameters=()
+    OPERATOR_DECLARATION name=op_Addition parent=Company.Product.Outer modifiers=[public,static] returns=Company.Product.Outer`1<T> parameters=(a As Company.Product.Outer`1<T>, b As Company.Product.Outer`1<T>)
+    OPERATOR_DECLARATION name=op_Explicit parent=Company.Product.Outer modifiers=[public,static,narrowing] returns=System.Int32 parameters=(value As Company.Product.Outer`1<T>)
+    PROPERTY_DECLARATION name=Name parent=Company.Product.Outer modifiers=[public] type=System.String
+    PROPERTY_DECLARATION name=Items parent=Company.Product.Outer modifiers=[public,readonly] type=System.Collections.Generic.List`1<System.Int32>
+    EVENT_DECLARATION name=Changed parent=Company.Product.Outer modifiers=[public] type=System.EventHandler
+    TYPE_DECLARATION name=Inner parent=Company.Product.Outer modifiers=[public] vm=Company.Product.Outer`1/Inner kind=CLASS extends=[System.Object]
+    TYPE_DECLARATION name=Point parent=Company.Product.Outer modifiers=[public] vm=Company.Product.Outer`1/Point kind=STRUCTURE extends=[System.ValueType]
+      FIELD_DECLARATION name=X parent=Company.Product.Outer.Point modifiers=[public,dim] type=System.Int32
+  TYPE_DECLARATION name=Helpers parent=Company.Product modifiers=[internal,static,sealed] vm=Company.Product.Helpers kind=MODULE extends=[System.Object]
+    METHOD_DECLARATION name=Help parent=Company.Product.Helpers modifiers=[public,static] returns=System.Void parameters=()
+    FIELD_DECLARATION name=state parent=Company.Product.Helpers modifiers=[private,static,dim] type=System.Object
+  TYPE_DECLARATION name=IShape parent=Company.Product modifiers=[public] vm=Company.Product.IShape kind=INTERFACE extends=[]
+    METHOD_DECLARATION name=Area parent=Company.Product.IShape modifiers=[public] returns=System.Double parameters=()
+  ENUM_DECLARATION name=Color parent=Company.Product modifiers=[internal] vm=Company.Product.Color kind=ENUM extends=[System.Enum]
+    ENUM_MEMBER_DECLARATION name=Red parent=Company.Product.Color modifiers=[public,static] type=Company.Product.Color const
+    ENUM_MEMBER_DECLARATION name=Green parent=Company.Product.Color modifiers=[public,static] type=Company.Product.Color const
+  DELEGATE_DECLARATION name=Transformer parent=Company.Product modifiers=[internal] vm=Company.Product.Transformer`1 kind=DELEGATE extends=[System.MulticastDelegate]
+NAMESPACE_DECLARATION name=Other parent=null
+  TYPE_DECLARATION name=InGlobal parent=Other modifiers=[internal] vm=Other.InGlobal kind=CLASS extends=[System.Object]
+TYPE_DECLARATION name=TopLevel parent=null modifiers=[internal] vm=TopLevel kind=CLASS extends=[System.Object]
+  EXTERNAL_METHOD_DECLARATION name=Beep parent=TopLevel modifiers=[public] returns=System.Boolean parameters=(frequency As System.Int32, duration As System.Int32)

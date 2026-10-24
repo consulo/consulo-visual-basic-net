@@ -1,0 +1,26 @@
+expected.0:
+    text: "''{0}'' expected"
+expected.identifier:
+    text: Identifier expected
+expected.expression:
+    text: Expression expected
+expected.type:
+    text: Type expected
+expected.end.of.statement:
+    text: End of statement expected
+expected.end.0:
+    text: "''End {0}'' expected"
+expected.declaration:
+    text: Declaration expected
+expected.statement:
+    text: Statement expected
+expected.argument:
+    text: Argument expected
+expected.parameter:
+    text: Parameter expected
+expected.query.clause:
+    text: Query clause expected
+end.without.begin.0:
+    text: "''End {0}'' must be preceded by a matching ''{0}''"
+not.valid.here.0:
+    text: "''{0}'' is not valid here"
