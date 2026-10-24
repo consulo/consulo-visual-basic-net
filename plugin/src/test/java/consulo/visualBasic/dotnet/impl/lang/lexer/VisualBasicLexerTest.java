@@ -20,6 +20,7 @@ import consulo.language.ast.IElementType;
 import consulo.language.lexer.Lexer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.io.IOException;
@@ -54,6 +55,29 @@ public class VisualBasicLexerTest {
             }
             Assertions.assertEquals(readText(gold).strip(), actual);
         }));
+    }
+
+    /**
+     * {@code \r\n} is one line terminator. Not in a test file: git may store those with {@code \n}.
+     */
+    @Test
+    public void windowsLineEnds() {
+        String actual = dumpTokens(new VisualBasicLexer(), "x = 1\r\n' comment\r\ny = 2\r\n");
+        Assertions.assertEquals("""
+            0000: IdentifierToken 'x'
+            0001: WHITE_SPACE ' '
+            0002: EqualsToken '='
+            0003: WHITE_SPACE ' '
+            0004: IntegerLiteralToken '1'
+            0005: StatementTerminatorToken '\\r\\n'
+            0007: CommentTrivia '' comment'
+            0016: StatementTerminatorToken '\\r\\n'
+            0018: IdentifierToken 'y'
+            0019: WHITE_SPACE ' '
+            0020: EqualsToken '='
+            0021: WHITE_SPACE ' '
+            0022: IntegerLiteralToken '2'
+            0023: StatementTerminatorToken '\\r\\n'""", actual);
     }
 
     /**
