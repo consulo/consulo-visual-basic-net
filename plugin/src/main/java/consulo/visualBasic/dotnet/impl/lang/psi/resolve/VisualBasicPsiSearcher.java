@@ -18,7 +18,6 @@ package consulo.visualBasic.dotnet.impl.lang.psi.resolve;
 
 import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
-import consulo.project.DumbService;
 import consulo.content.scope.SearchScope;
 import consulo.dotnet.psi.DotNetLikeMethodDeclaration;
 import consulo.dotnet.psi.DotNetQualifiedElement;
@@ -28,7 +27,10 @@ import consulo.dotnet.psi.resolve.DotNetNamespaceAsElement;
 import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.language.psi.stub.StubIndex;
 import consulo.language.psi.stub.StubIndexKey;
+import consulo.project.DumbService;
 import consulo.project.Project;
+import consulo.visualBasic.dotnet.impl.lang.psi.partial.VisualBasicCompositeTypeDeclaration;
+import consulo.visualBasic.dotnet.impl.lang.psi.partial.VisualBasicPartialTypes;
 import consulo.visualBasic.dotnet.impl.lang.psi.stub.index.VisualBasicIndexKeys;
 import jakarta.inject.Inject;
 
@@ -41,7 +43,7 @@ import java.util.function.Predicate;
  * Visual Basic types and namespaces for all .NET languages, by their declared case, and {@code <Extension>} methods of
  * modules, which C# calls as extension methods.
  * <p>
- * TODO [VISTALL] merge Partial types
+ * The parts of a partial type are found as one {@link VisualBasicCompositeTypeDeclaration}.
  *
  * @author VISTALL
  * @since 2026-10-23
@@ -86,7 +88,7 @@ public class VisualBasicPsiSearcher extends IndexBasedDotNetPsiSearcherExtension
                 result.add(type);
             }
         }
-        return result;
+        return VisualBasicPartialTypes.merge(result);
     }
 
     @RequiredReadAction

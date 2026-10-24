@@ -32,8 +32,9 @@ import consulo.dotnet.psi.DotNetPropertyDeclaration;
 import consulo.dotnet.psi.DotNetTypeDeclaration;
 import consulo.dotnet.psi.DotNetVariable;
 import consulo.language.psi.PsiElement;
+import consulo.visualBasic.dotnet.impl.lang.psi.VisualBasicTypeKind;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicMethodDeclarationImpl;
-import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicTypeDeclarationImpl;
+import consulo.visualBasic.dotnet.impl.lang.psi.partial.VisualBasicPartialTypes;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -95,15 +96,12 @@ public final class VisualBasicHighlightUtil {
 
     @RequiredReadAction
     private static TextAttributesKey getTypeKey(DotNetTypeDeclaration type) {
-        if (type instanceof VisualBasicTypeDeclarationImpl vbType) {
-            switch (vbType.getKind()) {
-                case MODULE:
-                    return VisualBasicHighlightKey.MODULE_NAME;
-                case DELEGATE:
-                    return VisualBasicHighlightKey.DELEGATE_NAME;
-                default:
-                    break;
-            }
+        VisualBasicTypeKind kind = VisualBasicPartialTypes.getKind(type);
+        if (kind == VisualBasicTypeKind.MODULE) {
+            return VisualBasicHighlightKey.MODULE_NAME;
+        }
+        if (kind == VisualBasicTypeKind.DELEGATE) {
+            return VisualBasicHighlightKey.DELEGATE_NAME;
         }
         if (type.isInterface()) {
             return VisualBasicHighlightKey.INTERFACE_NAME;
@@ -117,7 +115,7 @@ public final class VisualBasicHighlightUtil {
         if (DotNetInheritUtil.isAttribute(type)) {
             return VisualBasicHighlightKey.ATTRIBUTE_NAME;
         }
-        if (!(type instanceof VisualBasicTypeDeclarationImpl) && DotNetInheritUtil.isParent(DotNetTypes.System.MulticastDelegate, type, false)) {
+        if (kind == null && DotNetInheritUtil.isParent(DotNetTypes.System.MulticastDelegate, type, false)) {
             return VisualBasicHighlightKey.DELEGATE_NAME;
         }
         return VisualBasicHighlightKey.CLASS_NAME;

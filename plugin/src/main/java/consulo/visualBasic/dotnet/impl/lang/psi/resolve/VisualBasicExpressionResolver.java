@@ -49,10 +49,12 @@ import consulo.visualBasic.dotnet.impl.lang.psi.VisualBasicTokens;
 import consulo.visualBasic.dotnet.impl.lang.psi.VisualBasicTypeKind;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicAccessorImpl;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicLocalVariableImpl;
+import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicMethodDeclarationImpl;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicNamespaceDeclarationImpl;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicReferenceExpressionImpl;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicTypeArgumentListImpl;
 import consulo.visualBasic.dotnet.impl.lang.psi.impl.VisualBasicTypeDeclarationImpl;
+import consulo.visualBasic.dotnet.impl.lang.psi.partial.VisualBasicPartialTypes;
 import consulo.visualBasic.dotnet.impl.lang.psi.resolve.dotnet.DotNetMemberLookup;
 import consulo.visualBasic.dotnet.impl.lang.psi.resolve.dotnet.NameMatcher;
 import org.jspecify.annotations.Nullable;
@@ -197,7 +199,8 @@ public final class VisualBasicExpressionResolver {
     private static List<VisualBasicResolveResult> members(DotNetTypeDeclaration type, DotNetGenericExtractor extractor, String name, PsiElement context) {
         List<VisualBasicResolveResult> results = new ArrayList<>();
         DotNetTypeDeclaration owner = null;
-        for (DotNetMemberLookup.Member member : DotNetMemberLookup.findMembers(type, extractor, name, NameMatcher.IGNORE_CASE,
+        DotNetTypeDeclaration wholeType = VisualBasicPartialTypes.compositeOrSelf(type);
+        for (DotNetMemberLookup.Member member : DotNetMemberLookup.findMembers(wholeType, extractor, name, NameMatcher.IGNORE_CASE,
             it -> isAccessible(it, context), new VisualBasicTypeRefFactory(context))) {
             if (!results.isEmpty() && !(member.element() instanceof DotNetLikeMethodDeclaration) && member.owner() != owner) {
                 // fields, properties and events of a type hide the ones of its supertypes by name
@@ -206,7 +209,40 @@ public final class VisualBasicExpressionResolver {
             owner = member.owner();
             results.add(new VisualBasicResolveResult(member.element(), member.extractor()));
         }
-        return results;
+        return withoutPartialMethodDeclarations(results);
+    }
+
+    /**
+     * A {@code Partial} method declaration and its implementation are one method: the implementation wins.
+     */
+    @RequiredReadAction
+    private static List<VisualBasicResolveResult> withoutPartialMethodDeclarations(List<VisualBasicResolveResult> results) {
+        if (results.size() < 2) {
+            return results;
+        }
+        List<VisualBasicResolveResult> filtered = new ArrayList<>(results.size());
+        for (VisualBasicResolveResult result : results) {
+            if (result.getElement() instanceof VisualBasicMethodDeclarationImpl method
+                && method.hasModifier(VisualBasicModifier.PARTIAL)
+                && hasImplementation(method, results)) {
+                continue;
+            }
+            filtered.add(result);
+        }
+        return filtered;
+    }
+
+    @RequiredReadAction
+    private static boolean hasImplementation(VisualBasicMethodDeclarationImpl declaration, List<VisualBasicResolveResult> results) {
+        for (VisualBasicResolveResult result : results) {
+            if (result.getElement() instanceof VisualBasicMethodDeclarationImpl other
+                && other != declaration
+                && !other.hasModifier(VisualBasicModifier.PARTIAL)
+                && other.getParameters().length == declaration.getParameters().length) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -220,12 +256,17 @@ public final class VisualBasicExpressionResolver {
         if (!(member instanceof DotNetModifierListOwner owner) || !owner.hasModifier(DotNetModifier.PRIVATE)) {
             return true;
         }
-        PsiElement memberType = PsiTreeUtil.getParentOfType(member, DotNetTypeDeclaration.class);
+        DotNetTypeDeclaration memberType = PsiTreeUtil.getParentOfType(member, DotNetTypeDeclaration.class);
         if (memberType == null) {
             return false;
         }
+        // any part of a partial type
+        DotNetTypeDeclaration wholeMemberType = VisualBasicPartialTypes.compositeOrSelf(memberType);
         for (PsiElement parent = context.getParent(); parent != null; parent = parent.getParent()) {
             if (parent == memberType || parent.isEquivalentTo(memberType)) {
+                return true;
+            }
+            if (parent instanceof DotNetTypeDeclaration type && VisualBasicPartialTypes.compositeOrSelf(type).equals(wholeMemberType)) {
                 return true;
             }
         }
@@ -432,8 +473,9 @@ public final class VisualBasicExpressionResolver {
 
     @RequiredReadAction
     private static boolean isModule(DotNetTypeDeclaration type) {
-        if (type instanceof VisualBasicTypeDeclarationImpl visualBasicType) {
-            return visualBasicType.getKind() == VisualBasicTypeKind.MODULE;
+        VisualBasicTypeKind kind = VisualBasicPartialTypes.getKind(type);
+        if (kind != null) {
+            return kind == VisualBasicTypeKind.MODULE;
         }
         DotNetModifierList modifierList = type.getModifierList();
         if (modifierList == null) {

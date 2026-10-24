@@ -156,40 +156,29 @@ public class VisualBasicCSharpInteropTest {
         });
     }
 
+    private static final String EXTENSIONS = """
+        Imports System.Runtime.CompilerServices
+
+        Public Module ShapeReports
+            <Extension>
+            Public Function ToReport(values As Integer()) As String
+                Return ""
+            End Function
+
+            Public Function NotExtension(values As Integer()) As String
+                Return ""
+            End Function
+        End Module
+        """;
+
     /**
      * {@code <Extension>} functions of modules, by the namespace C# imports, for C# extension method calls.
      */
     @Test
     public void extensionMethods(HeadlessProjects projects) throws Exception {
-        String visualBasic = """
-            Imports System.Runtime.CompilerServices
-
-            Public Module ShapeReports
-                <Extension>
-                Public Function ToReport(values As Integer()) As String
-                    Return ""
-                End Function
-
-                Public Function NotExtension(values As Integer()) As String
-                    Return ""
-                End Function
-            End Module
-            """;
-        String csharp = """
-            using Vb.Formatting;
-
-            class Use
-            {
-                string Run(int[] values)
-                {
-                    return values.ToReport();
-                }
-            }
-            """;
-        Map<String, PsiFile> files = VisualBasicTesting.openSources(projects, Map.of("ShapeReports.vb", visualBasic, "Use.cs", csharp),
-            extension -> extension.setRootNamespace("Vb.Formatting"));
-        PsiFile csharpFile = files.get("Use.cs");
-        Project project = csharpFile.getProject();
+        PsiFile file = VisualBasicTesting.openSources(projects, Map.of("ShapeReports.vb", EXTENSIONS),
+            extension -> extension.setRootNamespace("Vb.Formatting")).get("ShapeReports.vb");
+        Project project = file.getProject();
 
         ReadAction.run(() -> {
             GlobalSearchScope scope = GlobalSearchScope.allScope(project);
@@ -207,8 +196,26 @@ public class VisualBasicCSharpInteropTest {
             List<String> all = new ArrayList<>();
             searcher.processExtensionMethods("Vb.Formatting", scope, it -> all.add(it.getName()));
             assertThat(all).containsExactly("ToReport");
+        });
+    }
 
-            // the C# call
+    @Test
+    public void csharpCallsExtensionMethod(HeadlessProjects projects) throws Exception {
+        String csharp = """
+            using Vb.Formatting;
+
+            class Use
+            {
+                string Run(int[] values)
+                {
+                    return values.ToReport();
+                }
+            }
+            """;
+        PsiFile csharpFile = VisualBasicTesting.openSources(projects, Map.of("ShapeReports.vb", EXTENSIONS, "Use.cs", csharp),
+            extension -> extension.setRootNamespace("Vb.Formatting")).get("Use.cs");
+
+        ReadAction.run(() -> {
             String text = csharpFile.getText();
             PsiElement target = resolve(csharpFile.findReferenceAt(text.indexOf("ToReport()")));
             assertThat(target).as("values.ToReport()").isNotNull();

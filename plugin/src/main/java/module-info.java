@@ -32,6 +32,7 @@ module consulo.visualBasic.dotnet {
     exports consulo.visualBasic.dotnet.impl.lang.parser.preprocessor;
     exports consulo.visualBasic.dotnet.impl.lang.psi;
     exports consulo.visualBasic.dotnet.impl.lang.psi.impl;
+    exports consulo.visualBasic.dotnet.impl.lang.psi.partial;
     exports consulo.visualBasic.dotnet.impl.lang.psi.resolve;
     exports consulo.visualBasic.dotnet.impl.lang.psi.resolve.dotnet;
     exports consulo.visualBasic.dotnet.impl.lang.psi.stub;

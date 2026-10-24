@@ -128,6 +128,22 @@ public class VisualBasicTypeDeclarationImpl extends VisualBasicStubMemberImpl<Vi
     @Override
     public DotNetTypeRef[] getExtendTypeRefs() {
         List<DotNetTypeRef> result = new ArrayList<>();
+        if (!collectDeclaredExtendTypeRefs(result)) {
+            DotNetTypeRef implicitBase = getImplicitBaseTypeRef();
+            if (implicitBase != null) {
+                result.add(0, implicitBase);
+            }
+        }
+        return result.toArray(DotNetTypeRef[]::new);
+    }
+
+    /**
+     * Adds the types of the {@code Inherits} and {@code Implements} statements of this declaration.
+     *
+     * @return whether a base class was declared ({@code Inherits} of a non-interface)
+     */
+    @RequiredReadAction
+    public boolean collectDeclaredExtendTypeRefs(List<DotNetTypeRef> result) {
         boolean hasBaseType = false;
         for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
             IElementType type = child.getNode().getElementType();
@@ -138,6 +154,14 @@ public class VisualBasicTypeDeclarationImpl extends VisualBasicStubMemberImpl<Vi
                 }
             }
         }
+        return hasBaseType;
+    }
+
+    /**
+     * Base type without {@code Inherits}: {@code Object}, {@code ValueType}, ...; none for interfaces.
+     */
+    @RequiredReadAction
+    public @Nullable DotNetTypeRef getImplicitBaseTypeRef() {
         String implicitBase = switch (getKind()) {
             case CLASS, MODULE -> DotNetTypes.System.Object;
             case STRUCTURE -> DotNetTypes.System.ValueType;
@@ -145,10 +169,7 @@ public class VisualBasicTypeDeclarationImpl extends VisualBasicStubMemberImpl<Vi
             case DELEGATE -> DotNetTypes.System.MulticastDelegate;
             case INTERFACE -> null;
         };
-        if (!hasBaseType && implicitBase != null) {
-            result.add(0, new VisualBasicTypeRefByQName(this, implicitBase));
-        }
-        return result.toArray(DotNetTypeRef[]::new);
+        return implicitBase == null ? null : new VisualBasicTypeRefByQName(this, implicitBase);
     }
 
     @RequiredReadAction
